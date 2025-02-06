@@ -4,11 +4,11 @@ public class Main {
 
   public static void main(String[] args) {
 
-    Kouza04 kouza04 = new Kouza04();
-    kouza04.selfIntroduction();
+    Kouza05 kouza05 = new Kouza05();
+    kouza05.showFullName("石野", "卓球");
+    kouza05.showFullName("ピエール", "瀧");
 
-    }
-
+  }
 
 
 }
