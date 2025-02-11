@@ -4,8 +4,11 @@ public class Main {
 
   public static void main(String[] args) {
 
-    Kouza06 kouza06 = new Kouza06();
-    kouza06.removeMap();
+    Kouza07 kouza07 = new Kouza07();
+    System.out.println("課題１");
+    kouza07.kadai1();
+    System.out.println("課題２");
+    kouza07.kadai2();
 
   }
 
