@@ -11,6 +11,10 @@ public class InternalMedicine extends Medicine {//内服薬
     this.singleDose = singleDose;
   }
 
+  public int getStock() {
+    return this.stock;
+  }
+
   @Override
   public void use() {
     if (!this.isNotExpired()) {
@@ -22,6 +26,11 @@ public class InternalMedicine extends Medicine {//内服薬
     } else {
       System.out.println("薬が足りません。");
     }
+  }
+
+  //以前に購入したもので、使い切れず余っていた同じ種類の薬を、（優先的に使用する前提で）このインスタンスのstockに合算する
+  public void addUpFromLastMedicine(int lastMedicineStock) {
+    this.stock += lastMedicineStock;
   }
 
 
