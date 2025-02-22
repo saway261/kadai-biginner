@@ -9,11 +9,11 @@ public class TopicalMedicine extends Medicine {//外用薬
 
   @Override
   public void use() {
-    if (!this.isNotExpired()) {
+    if (!isNotExpired()) {
       System.out.println("使用期限が切れています。");
-      this.dispose();
+      dispose();
     } else {
-      System.out.println(this.name + "を使用しました。");
+      System.out.println(getName() + "を使用しました。");
     }
   }
 

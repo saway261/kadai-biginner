@@ -11,18 +11,18 @@ public class InternalMedicine extends Medicine {//内服薬
     this.singleDose = singleDose;
   }
 
-  public int getStock() {
-    return this.stock;
+  public int getSingleDose() {
+    return singleDose;
   }
 
   @Override
   public void use() {
-    if (!this.isNotExpired()) {
+    if (!isNotExpired()) {
       System.out.println("使用期限が切れています。");
-      this.dispose();
-    } else if (this.stock >= this.singleDose) {
-      this.stock -= this.singleDose;
-      System.out.println(this.name + "を" + this.singleDose + this.unit + "服用しました。");
+      dispose();
+    } else if (getStock() >= getSingleDose()) {
+      setStock(getStock() - getSingleDose());
+      System.out.println(getName() + "を" + getSingleDose() + getUnit() + "服用しました。");
     } else {
       System.out.println("薬が足りません。");
     }
@@ -30,7 +30,7 @@ public class InternalMedicine extends Medicine {//内服薬
 
   //以前に購入したもので、使い切れず余っていた同じ種類の薬を、（優先的に使用する前提で）このインスタンスのstockに合算する
   public void addUpFromLastMedicine(int lastMedicineStock) {
-    this.stock += lastMedicineStock;
+    setStock(getStock() + lastMedicineStock);
   }
 
 
