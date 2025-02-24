@@ -8,6 +8,13 @@ public class TopicalMedicine extends Medicine {//外用薬
   }
 
   @Override
+  public FirstAidKit setStock(int stock) {
+    FirstAidKit topicalMedicine = new TopicalMedicine(getName(), stock, getExpiration().getYear(),
+        getExpiration().getMonthValue(), getUnit());
+    return topicalMedicine;
+  }
+
+  @Override
   public void use() {
     if (!isNotExpired()) {
       System.out.println("使用期限が切れています。");

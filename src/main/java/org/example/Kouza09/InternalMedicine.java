@@ -16,6 +16,13 @@ public class InternalMedicine extends Medicine {//内服薬
   }
 
   @Override
+  public FirstAidKit setStock(int stock) {
+    FirstAidKit internalMedicine = new InternalMedicine(getName(), stock, getExpiration().getYear(),
+        getExpiration().getMonthValue(), getUnit(), getSingleDose());
+    return internalMedicine;
+  }
+
+  @Override
   public void use() {
     if (!isNotExpired()) {
       System.out.println("使用期限が切れています。");

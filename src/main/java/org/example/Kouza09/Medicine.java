@@ -10,6 +10,13 @@ public abstract class Medicine implements FirstAidKit {
   private LocalDate expiration;//使用期限
   private String unit;// 在庫の数え方の単位
 
+  public Medicine(String name, int stock, int expirationYear, int expirationMonth, String unit) {
+    this.name = name;
+    this.stock = stock;
+    this.expiration = YearMonth.of(expirationYear, expirationMonth).atEndOfMonth();
+    this.unit = unit;
+  }
+
   @Override
   public String getName() {
     return name;
@@ -31,17 +38,8 @@ public abstract class Medicine implements FirstAidKit {
   }
 
   @Override
-  public void setStock(int stock) {
-    this.stock = stock;
-  }
+  public abstract FirstAidKit setStock(int stock);
 
-
-  public Medicine(String name, int stock, int expirationYear, int expirationMonth, String unit) {
-    this.name = name;
-    this.stock = stock;
-    this.expiration = YearMonth.of(expirationYear, expirationMonth).atEndOfMonth();
-    this.unit = unit;
-  }
 
   @Override
   public void showStock() {

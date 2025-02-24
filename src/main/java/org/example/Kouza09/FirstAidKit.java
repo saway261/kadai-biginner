@@ -12,7 +12,7 @@ public interface FirstAidKit {
 
   String getUnit();
 
-  void setStock(int stock);
+  FirstAidKit setStock(int stock);
 
   void showStock();
 

@@ -43,8 +43,10 @@ public class BandAid implements FirstAidKit {
   }
 
   @Override
-  public void setStock(int stock) {
-    this.stock = stock;
+  public FirstAidKit setStock(int stock) {
+    BandAid bandAid = new BandAid(getName(), getSize(), stock, getExpiration().getYear(),
+        getExpiration().getMonthValue());
+    return bandAid;
   }
 
   @Override
