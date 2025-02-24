@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Kouza10 {
+public class Kouza10 extends Object {
 // 正規表現
   /*
   `リストにランダムな文字列を30個ほど入れる。
@@ -83,9 +83,46 @@ public class Kouza10 {
     System.out.println(numbers);
   }
 
-  public void pickUpOnlyUpperCaseAlphabet(List<String> randomStringList) {
+  public void pickUpOnlyUpperCaseAlphabetAndNumber(List<String> randomStringList) {
     System.out.println("【正規表現を使って英数字の大文字のみを抜き出す】");
-    setRegex("[A-Z]+");
+    setRegex("[A-Z0-9]+");
+
+    List<String> upperCases = randomStringList.stream()
+        .flatMap(str -> {
+          Matcher matcher = Pattern.compile(getRegex()).matcher(str);
+          List<String> matches = new ArrayList<>();
+          while (matcher.find()) {
+            matches.add(matcher.group());
+          }
+          return matches.stream();
+        })
+        .collect(Collectors.toList());
+
+    System.out.println(upperCases);
+  }
+
+  public void pickUpOnlyJapanese(List<String> randomStringList) {
+    System.out.println("【正規表現を使って日本語のみを抜き出す】");
+    setRegex(
+        "[\\p{Script=Hiragana}\\p{Script=Katakana}\\p{Script=Han}]+");//あるいは”[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]+”
+
+    List<String> upperCases = randomStringList.stream()
+        .flatMap(str -> {
+          Matcher matcher = Pattern.compile(getRegex()).matcher(str);
+          List<String> matches = new ArrayList<>();
+          while (matcher.find()) {
+            matches.add(matcher.group());
+          }
+          return matches.stream();
+        })
+        .collect(Collectors.toList());
+
+    System.out.println(upperCases);
+  }
+
+  public void pickUpNotNumberAndAlphabet(List<String> randomStringList) {
+    System.out.println("【正規表現を使って英数字以外を抜き出す】");
+    setRegex("[^0-9a-zA-Z]+");
 
     List<String> upperCases = randomStringList.stream()
         .flatMap(str -> {
