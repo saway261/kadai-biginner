@@ -16,13 +16,20 @@ public class Main {
 
     library.setCollectionOfLibrary(List.of(book1, book2, book3));
 
-    library.getCollectionOfLibrary().stream()
-        .map(book -> book.getTitle()).forEach(System.out::println);
-
     library.setCollectionOfLibrary(new Book("覚えておきたい！お菓子の基本　110", "関岡弘美", 4));
 
-    library.getCollectionOfLibrary().stream()
-        .map(book -> book.getTitle()).forEach(System.out::println);
+    System.out.println("【タイトル検索】");
+    List<Integer> searchResult1 = library.searchByTitle("JAVA");
+    library.showResult(searchResult1);
+
+    System.out.println("\n【著者検索】");
+    List<Integer> searchResult2 = library.searchByAuthor("湊川");
+    library.showResult(searchResult2);
+
+    System.out.println("\n【蔵書番号検索】");
+    List<Integer> searchResult3 = library.searchByNumber(2);
+    library.showResult(searchResult3);
+
 
   }
 
