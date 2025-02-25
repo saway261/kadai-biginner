@@ -12,6 +12,17 @@ public class BandAid implements FirstAidKit {
   private final String unit = "枚";
 
   public BandAid(String name, String size, int stock, int expirationYear, int expirationMonth) {
+    if (stock < 0) {
+      throw new IllegalArgumentException("在庫 (stock) は0以上である必要があります。: " + stock);
+    }
+    if (expirationYear < 2000 || expirationYear > 2100) {
+      throw new IllegalArgumentException("使用期限の年 (expirationYear) は 2000 以上 2100 以下である必要があります。: "
+          + expirationYear);
+    }
+    if (expirationMonth < 1 || expirationMonth > 12) {
+      throw new IllegalArgumentException("使用期限の月 (expirationMonth) は 1 以上 12 以下である必要があります。: "
+          + expirationMonth);
+    }
     this.name = name;
     this.size = size;
     this.stock = stock;
@@ -71,24 +82,6 @@ public class BandAid implements FirstAidKit {
             + getExpiration().getMonthValue() + " です。");
   }
 
-  @Override
-  public void dispose() {
-    setStock(0);
-  }
-
-
-  @Override
-  public void use() {
-    if (!isNotExpired()) {
-      System.out.println("使用期限が切れています。");
-      dispose();
-    } else if (getStock() > 0) {
-      setStock(getStock() - 1);
-      System.out.println(getName() + "を1枚使用しました。");
-    } else {
-      System.out.println(getName() + "はありません。");
-    }
-  }
 
 }
 

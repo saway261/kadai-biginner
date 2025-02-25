@@ -20,8 +20,4 @@ public interface FirstAidKit {
 
   void showExpiration();
 
-  void dispose();
-
-  void use();
-
 }
