@@ -8,8 +8,9 @@ public class TopicalMedicine extends Medicine {//外用薬
   }
 
   @Override
-  public FirstAidKit setStock(int stock) {
-    FirstAidKit topicalMedicine = new TopicalMedicine(getName(), stock, getExpiration().getYear(),
+  public TopicalMedicine setStock(int stock) {
+    TopicalMedicine topicalMedicine = new TopicalMedicine(getName(), stock,
+        getExpiration().getYear(),
         getExpiration().getMonthValue(), getUnit());
     return topicalMedicine;
   }

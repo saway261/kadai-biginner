@@ -49,7 +49,7 @@ public abstract class Medicine implements FirstAidKit {
   }
 
   @Override
-  public abstract FirstAidKit setStock(int stock);
+  public abstract Medicine setStock(int stock);
 
 
   @Override

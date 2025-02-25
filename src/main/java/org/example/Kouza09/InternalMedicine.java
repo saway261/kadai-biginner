@@ -19,8 +19,9 @@ public class InternalMedicine extends Medicine {//内服薬
   }
 
   @Override
-  public FirstAidKit setStock(int stock) {
-    FirstAidKit internalMedicine = new InternalMedicine(getName(), stock, getExpiration().getYear(),
+  public InternalMedicine setStock(int stock) {
+    InternalMedicine internalMedicine = new InternalMedicine(getName(), stock,
+        getExpiration().getYear(),
         getExpiration().getMonthValue(), getUnit(), getSingleDose());
     return internalMedicine;
   }

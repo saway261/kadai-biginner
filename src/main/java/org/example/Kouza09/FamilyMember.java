@@ -44,8 +44,8 @@ public class FamilyMember {
 
       case InternalMedicine internalMedicine -> {
         try {
-          InternalMedicine medi = (InternalMedicine) internalMedicine.setStock(
-              internalMedicine.getStock() - internalMedicine.getSingleDose()); //TODO:なぜキャスト必要？
+          InternalMedicine medi = internalMedicine.setStock(
+              internalMedicine.getStock() - internalMedicine.getSingleDose());
           System.out.println(getName() + "は、" + internalMedicine.getName() + "を"
               + internalMedicine.getSingleDose() + internalMedicine.getUnit() + "飲んだ");
           return medi;
@@ -62,7 +62,7 @@ public class FamilyMember {
 
       case BandAid bandAid -> {
         try {
-          BandAid band = (BandAid) bandAid.setStock(bandAid.getStock() - 1); //TODO:なぜキャスト必要？
+          BandAid band = bandAid.setStock(bandAid.getStock() - 1);
           System.out.println(getName() + "は、" + bandAid.getName() + "を1枚使った");
           return band;
         } catch (IllegalArgumentException e) {
