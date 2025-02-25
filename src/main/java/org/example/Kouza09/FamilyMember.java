@@ -37,7 +37,8 @@ public class FamilyMember {
     }
   }
 
-  public FirstAidKit reduceStockByUsingItem(FirstAidKit item) {
+  FirstAidKit reduceStockByUsingItem(
+      FirstAidKit item) { //mainから使用期限の確認なしで呼び出されないように、アクセス制御はパッケージプライベート
 
     switch (item) {
 
