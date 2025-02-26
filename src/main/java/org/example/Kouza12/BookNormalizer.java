@@ -29,10 +29,10 @@ public class BookNormalizer {
   }
 
   public String normalizeText(String text) {
-    String normalized = Normalizer.normalize(text, Normalizer.Form.NFKC);
-    normalized = toHiragana(normalized);
-    normalized = normalized.toLowerCase();
-    return normalized;
+    String normalized1 = Normalizer.normalize(text, Normalizer.Form.NFKC); //半角文字を全角に統合
+    String normalized2 = toHiragana(normalized1); //カタカナをひらがなに統合
+    String normalized3 = normalized2.toLowerCase(); //大文字を小文字に統合
+    return normalized3;
   }
 
 

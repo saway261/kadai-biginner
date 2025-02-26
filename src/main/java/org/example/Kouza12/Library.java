@@ -12,13 +12,19 @@ public class Library {
     return collectionOfLibrary;
   }
 
-  public void setCollectionOfLibrary(Book book) {
-    this.collectionOfLibrary.add(book);
+  public void setCollectionOfLibrary(Book newBook) {
+    for (Book existingBook : getCollectionOfLibrary()) {
+      if (existingBook.getNumber() == newBook.getNumber()) {
+        throw new IllegalArgumentException(
+            "同じ番号の書籍がすでに存在します: " + newBook.getNumber());
+      }
+    }
+    this.collectionOfLibrary.add(newBook);
   }
 
-  public void setCollectionOfLibrary(List<Book> bookList) {
-    for (Book book : bookList) {
-      this.collectionOfLibrary.add(book);
+  public void setCollectionOfLibrary(List<Book> newBookList) {
+    for (Book newBook : newBookList) {
+      setCollectionOfLibrary(newBook);
     }
   }
 
@@ -63,7 +69,7 @@ public class Library {
       if (book.getNumber() == number) {
         System.out.println(
             "■タイトル：" + book.getTitle() + "\n■タイトル：" + book.getAuthor() + "\n■蔵書番号："
-                + book.getNumber());
+                + book.getNumber() + "\n");
       }
     }
   }
