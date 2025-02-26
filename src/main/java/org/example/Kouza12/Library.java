@@ -5,35 +5,35 @@ import java.util.List;
 
 public class Library {
 
-  private List<Book> collectionOfLibrary = new ArrayList<>();
+  private List<Book> books = new ArrayList<>();
   BookNormalizer bookNormalizer = new BookNormalizer();
 
-  public List<Book> getCollectionOfLibrary() {
-    return collectionOfLibrary;
+  public List<Book> getBooks() {
+    return books;
   }
 
-  public void setCollectionOfLibrary(Book newBook) {
-    for (Book existingBook : getCollectionOfLibrary()) {
+  public void setBooks(Book newBook) {
+    for (Book existingBook : getBooks()) {
       if (existingBook.getNumber() == newBook.getNumber()) {
         throw new IllegalArgumentException(
             "同じ番号の書籍がすでに存在します: " + newBook.getNumber());
       }
     }
-    this.collectionOfLibrary.add(newBook);
+    this.books.add(newBook);
   }
 
-  public void setCollectionOfLibrary(List<Book> newBookList) {
+  public void setBooks(List<Book> newBookList) {
     for (Book newBook : newBookList) {
-      setCollectionOfLibrary(newBook);
+      setBooks(newBook);
     }
   }
 
   public List<Integer> searchByTitle(String searchWord) {
-    List<Book> normalizedbooks = bookNormalizer.normalizeBooks(getCollectionOfLibrary());
+    List<Book> normalizedBooks = bookNormalizer.normalizeBooks(getBooks());
     String normalizedWord = bookNormalizer.normalizeText(searchWord);
 
     List<Integer> searchedNumbers = new ArrayList<>();
-    for (Book book : normalizedbooks) {
+    for (Book book : normalizedBooks) {
       if (book.getTitle().contains(normalizedWord)) {
         searchedNumbers.add(book.getNumber());
       }
@@ -42,7 +42,7 @@ public class Library {
   }
 
   public List<Integer> searchByAuthor(String searchWord) {
-    List<Book> normalizedbooks = bookNormalizer.normalizeBooks(getCollectionOfLibrary());
+    List<Book> normalizedbooks = bookNormalizer.normalizeBooks(getBooks());
     String normalizedWord = bookNormalizer.normalizeText(searchWord);
 
     List<Integer> searchedNumbers = new ArrayList<>();
@@ -56,7 +56,7 @@ public class Library {
 
   public List<Integer> searchByNumber(int searchNumber) {
     List<Integer> searchedNumbers = new ArrayList<>();
-    for (Book book : getCollectionOfLibrary()) {
+    for (Book book : getBooks()) {
       if (book.getNumber() == searchNumber) {
         searchedNumbers.add(book.getNumber());
       }
@@ -65,7 +65,7 @@ public class Library {
   }
 
   public void findByNumber(int number) {
-    for (Book book : getCollectionOfLibrary()) {
+    for (Book book : getBooks()) {
       if (book.getNumber() == number) {
         System.out.println(
             "■タイトル：" + book.getTitle() + "\n■タイトル：" + book.getAuthor() + "\n■蔵書番号："

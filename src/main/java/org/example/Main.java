@@ -16,9 +16,9 @@ public class Main {
     Book book4 = new Book("名前が語るお菓子の歴史", "ニナ・バルビエ, エマニュエル・ペレ", 4);
     Book book5 = new Book("すっきり暮らすために持たないもの、やめたこと", "主婦の友社", 5);
 
-    library.setCollectionOfLibrary(List.of(book1, book2, book3, book4, book5));
+    library.setBooks(List.of(book1, book2, book3, book4, book5));
 
-    library.setCollectionOfLibrary(new Book("覚えておきたい！お菓子の基本　110", "関岡弘美", 6));
+    library.setBooks(new Book("覚えておきたい！お菓子の基本　110", "関岡弘美", 6));
 
     System.out.println("【タイトル検索】");
     List<Integer> searchResult1 = library.searchByTitle("スッキリ");
