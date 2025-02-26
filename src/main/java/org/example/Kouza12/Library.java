@@ -68,7 +68,7 @@ public class Library {
     for (Book book : getBooks()) {
       if (book.getNumber() == number) {
         System.out.println(
-            "■タイトル：" + book.getTitle() + "\n■タイトル：" + book.getAuthor() + "\n■蔵書番号："
+            "■タイトル：" + book.getTitle() + "\n■著者名：" + book.getAuthor() + "\n■蔵書番号："
                 + book.getNumber() + "\n");
       }
     }
