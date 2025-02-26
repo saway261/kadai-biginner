@@ -8,13 +8,11 @@ public class TopicalMedicine extends Medicine {//外用薬
   }
 
   @Override
-  public void use() {
-    if (!this.isNotExpired()) {
-      System.out.println("使用期限が切れています。");
-      this.dispose();
-    } else {
-      System.out.println(this.name + "を使用しました。");
-    }
+  public TopicalMedicine setStock(int stock) {
+    TopicalMedicine topicalMedicine = new TopicalMedicine(getName(), stock,
+        getExpiration().getYear(),
+        getExpiration().getMonthValue(), getUnit());
+    return topicalMedicine;
   }
 
 }
