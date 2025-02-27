@@ -64,14 +64,13 @@ public class Library {
     return searchedNumbers;
   }
 
-  public void findByNumber(int number) {
+  public Book findByNumber(int number) {
     for (Book book : getBooks()) {
       if (book.getNumber() == number) {
-        System.out.println(
-            "■タイトル：" + book.getTitle() + "\n■著者名：" + book.getAuthor() + "\n■蔵書番号："
-                + book.getNumber() + "\n");
+        return book;
       }
     }
+    return null;
   }
 
   public void showResult(List<Integer> searchedNumbers) {
@@ -80,7 +79,10 @@ public class Library {
     } else {
       System.out.println(searchedNumbers.size() + "件ヒットしました。");
       for (int number : searchedNumbers) {
-        findByNumber(number);
+        Book book = findByNumber(number);
+        System.out.println(
+            "■タイトル：" + book.getTitle() + "\n■著者名：" + book.getAuthor() + "\n■蔵書番号："
+                + book.getNumber() + "\n");
       }
     }
   }
