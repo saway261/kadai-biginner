@@ -12,7 +12,7 @@ public class Library {
     return books;
   }
 
-  public void addBooks(Book newBook) {
+  public void setBooks(Book newBook) {
     for (Book existingBook : getBooks()) {
       if (existingBook.getNumber() == newBook.getNumber()) {
         throw new IllegalArgumentException(
@@ -22,9 +22,9 @@ public class Library {
     this.books.add(newBook);
   }
 
-  public void addBooks(List<Book> newBookList) {
+  public void setBooks(List<Book> newBookList) {
     for (Book newBook : newBookList) {
-      addBooks(newBook);
+      setBooks(newBook);
     }
   }
 
@@ -73,7 +73,7 @@ public class Library {
     return null;
   }
 
-  public void showSearchResult(List<Integer> searchedNumbers) {
+  public void showResult(List<Integer> searchedNumbers) {
     if (searchedNumbers.isEmpty()) {
       System.out.println("条件に一致する書籍はヒットしませんでした。");
     } else {
